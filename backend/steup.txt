@@ -1,0 +1,11 @@
+1: npm iniy -y
+2: npm i express -> npm install --save-dev @types/express
+3: npm i --save-dev typescript ts-node @types/node
+4: npx tsc --init (1ota tsconfig.json create hunxa)
+5.npm i dotenv 
+6.
+5:package file open then chnage script code 
+  "dev": "nodemon server.ts",
+    "build": "tsc",
+    "start": "ts-node server.ts"
+c. create service.ts file 
