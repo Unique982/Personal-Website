@@ -2,6 +2,8 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Code, Database, Sparkles } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export function HeroSection() {
   return (
@@ -31,12 +33,16 @@ export function HeroSection() {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="gap-2">
-                Hire Me <ArrowRight className="w-4 h-4" />
-              </Button>
-              <Button size="lg" variant="outline">
-                View Projects
-              </Button>
+              <Link href={"#contact"}>
+                <Button size="lg" className="gap-2">
+                  Hire Me <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+              <Link href={"/projects"}>
+                <Button size="lg" variant="outline">
+                  View Projects
+                </Button>
+              </Link>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6">
@@ -54,43 +60,23 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* ================= RIGHT IMAGE / EDITOR ================= */}
-          <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
-            <div className="relative w-full max-w-md md:max-w-lg">
-              {/* ===== COLORFUL CODE EDITOR ===== */}
-              <div className="relative rounded-2xl overflow-hidden border border-border shadow-2xl  from-[#0f172a] via-[#020617] to-black">
-                {/* Editor Header */}
-                <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-black/40">
-                  <span className="w-3 h-3 rounded-full bg-red-500" />
-                  <span className="w-3 h-3 rounded-full bg-yellow-400" />
-                  <span className="w-3 h-3 rounded-full bg-green-500" />
-                  <span className="ml-3 text-xs font-mono text-gray-400">
-                    portfolio.tsx
-                  </span>
-                </div>
+          {/* ================= RIGHT IMAGE WITH TOOLTIPS ================= */}
+          <div className="relative flex justify-center lg:justify-end order-1 lg:order-2 flex-1 w-full max-w-md md:max-w-lg">
+            <div className="relative w-72 h-96 md:w-96 md:h-[500px] rounded-2xl overflow-hidden border border-gray-200 bg-white/20 shadow-md">
+              <Image
+                src="https://scontent.fbwa1-1.fna.fbcdn.net/v/t39.30808-6/491799846_1169284674662162_1326970635664012583_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=WSdCkkL6FUAQ7kNvwEA2-vG&_nc_oc=AdlMYbXM1z7vwGyhOr3zGrJeCIPFfXsFnl9Xc0KkiAXi2NkDE3vMSrvF5c-BJu3oD0wfPZyVFRez4BEWGFwWBsJd&_nc_zt=23&_nc_ht=scontent.fbwa1-1.fna&_nc_gid=dv2GbughnXfBWaSvzdTx_w&oh=00_AflqchnsBb8MDniTK3jS9PdxuMM8KM9RIxCjtrawv2YAMA&oe=6952EDA3"
+                alt="Profile"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
 
-                {/* Fake Code */}
-                <div className="p-5 text-sm  space-y-2 text-gray-300 h-64 md:h-80 lg:h-96"></div>
-              </div>
-
-              {/* ===== FLOATING PROFILE CARD ===== */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="relative w-50 h-56 md:w-56 md:h-72 rounded-2xl overflow-hidden border bg-background shadow-2xl">
-                  <img
-                    src="https://imgs.search.brave.com/n-t7L9uvyT99itnm1Bhs0WEgHZfGNp2uVk0C9LP_y2w/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9hdmF0/YXJzLmdpdGh1YnVz/ZXJjb250ZW50LmNv/bS91LzEzMzg4MDQy/OD92PTQ"
-                    alt="Profile"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0  from-black/40" />
-                </div>
-              </div>
-
-              {/* ===== FEATURE TOOLTIPS ===== */}
-              <div className="hidden lg:flex absolute -right-10 top-24 flex-col gap-4">
-                <Feature icon={Code} text="Clean Architecture" />
-                <Feature icon={Database} text="Scalable Backend" />
-                <Feature icon={Sparkles} text="Modern UI/UX" />
-              </div>
+            {/* Feature Tooltips */}
+            <div className="hidden lg:flex absolute -right-10 top-80 flex-col gap-4">
+              <Feature icon={Code} text="Clean Architecture" />
+              <Feature icon={Database} text="Scalable Backend" />
+              <Feature icon={Sparkles} text="Modern UI/UX" />
             </div>
           </div>
         </div>

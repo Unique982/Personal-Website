@@ -86,7 +86,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col" id="services">
       {/* Hero Section */}
       <section className="py-12 bg-gradient-to-b from-card to-background">
         <div className="container mx-auto px-4">

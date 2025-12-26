@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export function AboutSection() {
   return (
-    <section className="w-full">
+    <section className="w-full" id="about">
       {/* ===== HERO ===== */}
       <div className="bg-gradient-to-b from-card to-background py-8 sm:py-10">
         <div className="max-w-6xl mx-auto px-4 text-center">

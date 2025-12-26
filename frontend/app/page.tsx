@@ -8,7 +8,6 @@ import { ContactSection } from "@/components/contact-section";
 import Footer from "@/components/footer";
 import { ChatbotWidget } from "@/components/chatbot-widget";
 import { TechSkillsSection } from "@/components/skill-section";
-// </CHANGE>
 
 export default function Home() {
   return (

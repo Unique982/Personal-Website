@@ -10,6 +10,7 @@ export interface Project {
   liveUrl?: string;
   githubUrl?: string;
   screenshots: string[];
+  status?: "completed" | "ongoing" | "pending";
 }
 
 export const projects: Project[] = [
@@ -23,6 +24,8 @@ export const projects: Project[] = [
       "EdTech is a modern SaaS Learning Management Platform focused on scalability and security. It provides role-based user and institute management, secure course enrollment, protected learning content, and JWT-based RESTful APIs.",
     image:
       "https://v0-responsive-sidebar-component-three.vercel.app/analytics-dashboard.png",
+    liveUrl:
+      "https://v0-responsive-sidebar-component-three.vercel.app/analytics-dashboard.png",
     techStack: [
       "Next.js",
       "TypeScript",
@@ -32,6 +35,7 @@ export const projects: Project[] = [
       "JWT",
       "Tailwind CSS",
     ],
+    status: "ongoing",
     features: [
       "Role-based user and institute management",
       "Secure course enrollment",
@@ -42,8 +46,7 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/Unique982/Saas-EdTech-Backend.git",
     screenshots: [
-      "https://picsum.photos/seed/edtech1/1200/700",
-      "https://picsum.photos/seed/edtech2/1200/700",
+      "https://v0-responsive-sidebar-component-three.vercel.app/analytics-dashboard.png",
     ],
   },
 
@@ -54,7 +57,7 @@ export const projects: Project[] = [
     description:
       "A full-stack hospital system with appointments, billing, and medical reporting.",
     longDescription:
-      "A MERN-based Hospital Management System supporting Admin, Doctor, and Nurse roles. Features include appointment scheduling, billing management, secure authentication, and detailed medical reports.",
+      "The Hospital Management System (HMS) is a comprehensive full‑stack web application designed to automate, streamline, and enhance the everyday operations of a healthcare facility. Built using the MERN stack—which typically includes MongoDB / PostgreSQL, Express.js, React.js, and Node.js—this system provides a centralized platform where hospital staff, doctors, administrators, and patients can interact and manage key healthcare workflows in a user‑friendly, secure, and efficient way. In traditional hospital settings, many administrative tasks such as patient registration, appointment scheduling, record keeping, and report generation are performed manually or using outdated software. Such manual processes are prone to human error, duplication of data, data silos, limited accessibility, and operational delays. The HMS solves these challenges by digitizing processes, consolidating functions into a unified, scalable web application, and enhancing clinical efficiency through real‑time data access. It supports multiple user roles (Admin, Doctor, Nurse) with tailored dashboards and secure authentication. Core modules include Patient Management, Appointment Scheduling, Medical Records, Department & Staff Management, and Billing & Invoicing. The system is deployable to cloud platforms and scalable for performance, making it a reliable tool for modern healthcare operations.",
     image: "/hospital.png",
     techStack: [
       "MongoDB",
@@ -64,20 +67,42 @@ export const projects: Project[] = [
       "JWT",
       "Bootstrap",
     ],
+    status: "completed",
     features: [
-      "Role-based access (Admin, Doctor, Nurse)",
-      "Appointment scheduling",
-      "Billing system",
-      "Medical reporting",
-      "Secure authentication",
-      "Dashboard for staff",
+      "User Authentication & Authorization (Admin / Doctor / Patient)",
+      "Secure Login & Session Management (JWT / hashed passwords)",
+      "Role-based Dashboards and Access Control",
+      "Patient Registration & Profile Management",
+      "Doctor Profile Creation & Specialty Management",
+      "Department Management (Cardiology, Orthopedics, etc.)",
+      "Appointment Scheduling Module",
+      "View / Cancel / Reschedule Appointments",
+      "Medical Record Storage & Access",
+      "Prescription Documentation & Review",
+      "Manage Users (CRUD operations)",
+      "Manage Hospital Departments",
+      "Assign Doctors & Staff to Departments",
+      "Monitor System Logs & Reports",
+      "Generate Analytics & Usage Reports",
+      "Doctor Login & Availability Status",
+      "View Scheduled Appointments",
+      "Access Patient Histories",
+      "Record Treatment & Diagnosis",
+      "Update Profile & Work Schedule",
+      "Patient Registration / Login",
+      "Book / Cancel Appointments",
+      "View Medical History & Prescriptions",
+      "Update Personal / Contact Details",
+      "View Available Doctors & Specializations",
+      "RESTful API Backend",
+      "Responsive UI with React",
+      "Secure Data Storage",
+      "Error Handling & Validation",
+      "Deployment-ready Architecture",
     ],
     githubUrl:
       "https://github.com/Unique982/Hospital-Management-System-MERN-Full-Stack.git",
-    screenshots: [
-      "https://picsum.photos/seed/hospital1/1200/700",
-      "https://picsum.photos/seed/hospital2/1200/700",
-    ],
+    screenshots: ["/hospital.png"],
   },
 
   {
@@ -97,9 +122,10 @@ export const projects: Project[] = [
       "Billing module",
       "Simple authentication",
     ],
+    status: "completed",
     githubUrl:
       "https://github.com/Unique982/Hospital-Management-System-Project.git",
-    screenshots: ["https://picsum.photos/seed/phphospital/1200/700"],
+    screenshots: ["/hospitalphp.png"],
   },
 
   {
@@ -119,6 +145,7 @@ export const projects: Project[] = [
       "Admin & user dashboards",
       "Secure REST APIs",
     ],
+    status: "completed",
     githubUrl: "https://github.com/Unique982/Blog-Management-System.git",
     screenshots: ["https://picsum.photos/seed/blog1/1200/700"],
   },
@@ -129,7 +156,7 @@ export const projects: Project[] = [
     description:
       "A full-stack restaurant management system built with Next.js, Node.js, Express, and MySQL.",
     longDescription:
-      "This full-stack Restaurant Management System includes login for managers, chefs, waiters, and admins. Features include table booking, order management, menu management, billing, and invoice generation. Built with Next.js frontend and Node.js + Express backend connected to MySQL database.",
+      "The Restaurant Management System (RMS) is a comprehensive web application designed to automate and simplify restaurant operations. It provides a centralized platform for restaurant owners, managers, and staff to manage day-to-day activities such as order handling, table management, menu updates, billing, and staff assignments. The system is designed to enhance efficiency, reduce manual errors, and improve overall customer experience.\n\nRMS offers a user-friendly interface, ensuring that even staff members with minimal technical expertise can navigate the system easily. The application streamlines communication between front-of-house and back-of-house operations, allowing staff to manage orders, track table availability, and update statuses in real-time. This reduces delays, prevents miscommunication, and ensures timely service.\n\nThe menu management feature allows administrators to add, update, or remove menu items with detailed descriptions, prices, and images. Staff members can take orders efficiently, mark orders as completed, and communicate any special instructions directly through the system. The order management module keeps track of all active orders, allowing staff and managers to monitor progress and avoid confusion during peak hours.\n\nA key component of RMS is the table reservation system. Customers can book tables in advance, and the system automatically tracks table availability, helping restaurants optimize seating and reduce waiting times. The system supports user authentication and role-based access control, enabling admins to have full control, staff to manage daily operations, and customers (if applicable) to make bookings and view menu items.\n\nRMS also provides a robust dashboard that displays analytics and reports, including total sales, most popular dishes, daily orders, and customer activity. These insights assist restaurant owners in making informed business decisions, such as adjusting inventory, planning promotions, and improving service quality. Real-time notifications keep staff updated about new orders, reservations, or changes, ensuring a smooth workflow.",
     image: "/rsm.png",
     techStack: [
       "Next.js",
@@ -139,21 +166,21 @@ export const projects: Project[] = [
       "React.js",
       "Tailwind CSS",
     ],
+    status: "completed",
     features: [
-      "Customer, Admin login",
-      "Table booking system",
-      "Order management",
-      "Menu management",
-      "Billing & invoice generation",
-      "JWT authentication",
-      "RESTful APIs with Express.js",
-      "Responsive UI with Next.js & Tailwind CSS",
+      "User Authentication and Role Management (Admin,Customer)",
+      "Menu Management (Add, Update, Delete with descriptions and images)",
+      "Table Reservation System with real-time availability",
+      "Order Management (Place, Update, Track Orders)",
+      "Billing and Invoice Generation",
+      "Real-time Notifications for Orders and Reservations",
+      "Dashboard with Analytics and Reports",
+      "Responsive Design for Desktop, Tablet, and Mobile",
+      "Easy-to-use interface for staff with minimal training",
+      "Optimized workflows to reduce operational delays and errors",
     ],
     githubUrl: "https://github.com/Unique982/Restaurant-Management-System.git",
-    screenshots: [
-      "https://picsum.photos/seed/restaurant-mern1/1200/700",
-      "https://picsum.photos/seed/restaurant-mern2/1200/700",
-    ],
+    screenshots: ["/rsm.png"],
   },
   {
     id: "7",
@@ -173,7 +200,10 @@ export const projects: Project[] = [
       "Custom frontend",
     ],
     githubUrl: "https://github.com/Unique982/Online-News-Portal-System.git",
-    screenshots: ["https://picsum.photos/seed/newsportal/1200/700"],
+    screenshots: [
+      "https://images.unsplash.com/photo-1760199789464-7d3989e22758?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bmV3cyVFMiU4MCU5MXdlYnNpdGV8ZW58MHx8MHx8fDA%3D",
+    ],
+    status: "completed",
   },
 ];
 

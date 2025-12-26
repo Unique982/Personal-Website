@@ -1,17 +1,12 @@
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Check, Github } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
-import { getAllProjects } from "@/lib/project";
 import ProjectsGrid from "./projects-grid";
-
-// Sample Projects Data
+import { getAllProjects } from "@/lib/project";
 
 export default function ProjectsSection() {
+  const projects = getAllProjects().slice(0, 6);
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col" id="projects">
       {/* Hero Section */}
       <section className="py-12 bg-gradient-to-b from-card to-background">
         <div className="container mx-auto px-4">
@@ -27,7 +22,7 @@ export default function ProjectsSection() {
         </div>
       </section>
 
-      <ProjectsGrid limit={3} />
+      <ProjectsGrid projects={projects} />
       <div className="text-center mt-2">
         <Link href="/projects">
           <Button size="lg" variant="outline">

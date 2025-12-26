@@ -3,13 +3,20 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight, Github } from "lucide-react";
-import { getAllProjects } from "@/lib/project";
+import { getAllProjects, Project } from "@/lib/project";
 interface ProjectsGridProps {
-  limit?: number;
+  projects: Project[];
 }
 
-export default function ProjectsGrid({ limit }: ProjectsGridProps) {
-  const projects = getAllProjects().slice(0, limit);
+export default function ProjectsGrid({ projects }: ProjectsGridProps) {
+  if (projects.length === 0) {
+    return (
+      <div className="text-center py-20 text-muted-foreground">
+        No Project available.
+      </div>
+    );
+  }
+
   return (
     <section className="py-8">
       <div className="container mx-auto px-4">
@@ -26,7 +33,7 @@ export default function ProjectsGrid({ limit }: ProjectsGridProps) {
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
 
@@ -93,7 +100,7 @@ export default function ProjectsGrid({ limit }: ProjectsGridProps) {
                       </Button>
                     </Link>
                     {project.githubUrl && (
-                      <a
+                      <Link
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -103,7 +110,7 @@ export default function ProjectsGrid({ limit }: ProjectsGridProps) {
                           <Github className="h-4 w-4 mr-2" />
                           GitHub
                         </Button>
-                      </a>
+                      </Link>
                     )}
                   </div>
                 </div>

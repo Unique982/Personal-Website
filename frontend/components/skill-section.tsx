@@ -1,37 +1,57 @@
 "use client";
 
 import {
-  Code2,
-  Braces,
-  Server,
-  Cpu,
-  Layers,
-  Wind,
-  Database,
-  Leaf,
-} from "lucide-react";
-
-import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import Image from "next/image";
 
 export function TechSkillsSection() {
   const skills = [
-    { name: "JavaScript", icon: Code2 },
-    { name: "TypeScript", icon: Braces },
-    { name: "Node.js", icon: Code2 },
-    { name: "Express.js", icon: Cpu },
-    { name: "React.js", icon: Layers },
-    { name: "Next.js", icon: Wind },
-    { name: "PostgreSQL", icon: Database },
-    { name: "MongoDB", icon: Leaf },
+    {
+      name: "JavaScript",
+      image: "/js.png",
+    },
+    {
+      name: "TypeScript",
+      image: "/typescript.png",
+    },
+    {
+      name: "Node.js",
+      image:
+        "https://imgs.search.brave.com/8vvoZfcLX3RTeOVZlPlvpxTJkJIP7U7eozWs83HkAx8/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly92ZWN0/b3JpZmllZC5jb20v/aW1hZ2VzL25vZGUt/anMtaWNvbi0yLnBu/Zw",
+    },
+    {
+      name: "Express.js",
+      image:
+        "https://imgs.search.brave.com/aKPJGHohETaD3LzBBSiq7P-Qq9WFJw_sG9ZXGxzChyc/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly92ZWN0/b3JpZmllZC5jb20v/aW1hZ2VzL2V4cHJl/c3MtanMtaWNvbi0x/MC5wbmc",
+    },
+    {
+      name: "React.js",
+      image: "/react.png",
+    },
+    {
+      name: "Next.js",
+      image:
+        "https://imgs.search.brave.com/2ZrQa2_uxFs306DpffrqV-yCmrgBD-OoizDQ9ZD1ka4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuc2Vla2xvZ28u/Y29tL2xvZ28tcG5n/LzQ0LzIvbmV4dC1q/cy1pY29uLWxvZ28t/cG5nX3NlZWtsb2dv/LTQ0OTgyNS5wbmc",
+    },
+    {
+      name: "PostgreSQL",
+
+      image:
+        "https://imgs.search.brave.com/I7blnnsAQUfEbvh890WKjjy8RghN4CQCFSFO6uX770s/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pY29u/LWxpYnJhcnkuY29t/L2ltYWdlcy9wb3N0/Z3Jlc3FsLWljb24v/cG9zdGdyZXNxbC1p/Y29uLTExLmpwZw",
+    },
+    {
+      name: "MongoDB",
+      image:
+        "https://imgs.search.brave.com/BLnUQkwzO3b9vHhq3Y7DLP1XAWNWLgwYbOr7eYZ4UAk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9yYXcu/Z2l0aHVidXNlcmNv/bnRlbnQuY29tL2Rl/dGFpbi9zdmctbG9n/b3MvbWFzdGVyL3N2/Zy9tL21vbmdvZGIt/aWNvbi0xLnN2Zw",
+    },
   ];
 
   return (
-    <section className="w-full">
+    <section className="w-full" id="skill">
       {/* HERO */}
       <div className="bg-gradient-to-b from-card to-background py-12 sm:py-10">
         <div className="max-w-6xl mx-auto px-4 text-center">
@@ -52,7 +72,12 @@ export function TechSkillsSection() {
               <Tooltip key={skill.name}>
                 <TooltipTrigger asChild>
                   <div className="flex cursor-pointer flex-col items-center justify-center rounded-xl border border-border bg-card px-6 py-6 text-center transition ">
-                    <skill.icon className="h-8 w-8 text-foreground" />
+                    <Image
+                      src={skill.image}
+                      alt={skill.name}
+                      width={48}
+                      height={48}
+                    />
                   </div>
                 </TooltipTrigger>
 

@@ -17,10 +17,10 @@ export function Navbar() {
   }, []);
 
   const menuItems = [
-    { name: "Home", href: "#home" },
+    { name: "Home", href: "/" },
     { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
-    { name: "Projects", href: "/projects" },
+    { name: "Projects", href: "#projects" },
     { name: "Blog", href: "#blog" },
     { name: "Contact", href: "#contact" },
   ];
