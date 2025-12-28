@@ -53,7 +53,7 @@ export default async function BlogPostPage({
       <Navbar />
       <main className="flex-1">
         {/* Back */}
-        <div className="fixed top-20 left-8 z-50">
+        <div className=" top-20 left-8 z-50">
           <Link href="/blog">
             <Button variant="outline" size="sm">
               <ArrowLeft className="h-4 w-4 mr-2" />
@@ -123,14 +123,53 @@ export default async function BlogPostPage({
                   className="object-cover"
                 />
               </div>
+              <div className="prose prose-slate prose-invert max-w-none mb-8">
+                <div className="text-foreground leading-relaxed whitespace-pre-line space-y-6">
+                  {post.longDescription
+                    .split(/\s+/) // split by words
+                    .slice(0, 500)
+                    .join(" ")
+                    .split("\n\n")
+                    .map((paragraph, index) => {
+                      if (paragraph.startsWith("## ")) {
+                        return (
+                          <h2
+                            key={index}
+                            className="text-2xl font-bold text-foreground mt-8 mb-4"
+                          >
+                            {paragraph.replace("## ", "")}
+                          </h2>
+                        );
+                      }
+                      return (
+                        <p key={index} className="text-base leading-relaxed">
+                          {paragraph}
+                        </p>
+                      );
+                    })}
+                </div>
+              </div>
+              {/* sub image */}
+              {post.subImage && (
+                <div className="relative aspect-[16/9] rounded-2xl overflow-hidden border border-border mb-8">
+                  <Image
+                    src={post.subImage}
+                    alt={`${post.title} - additional`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              )}
 
               {/* Content */}
               <div className="prose prose-slate prose-invert max-w-none">
                 <div className="text-foreground leading-relaxed whitespace-pre-line space-y-6">
                   {post.longDescription
+                    .split(/\s+/)
+                    .slice(500)
+                    .join(" ")
                     .split("\n\n")
                     .map((paragraph, index) => {
-                      // Handle markdown-style headings
                       if (paragraph.startsWith("## ")) {
                         return (
                           <h2

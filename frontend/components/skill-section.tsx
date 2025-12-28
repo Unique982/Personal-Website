@@ -1,5 +1,4 @@
 "use client";
-
 import {
   Tooltip,
   TooltipContent,
@@ -7,17 +6,13 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import Image from "next/image";
+import { useState } from "react";
 
 export function TechSkillsSection() {
+  const [openTooltip, setOpenTooltip] = useState<string | null>(null);
   const skills = [
-    {
-      name: "JavaScript",
-      image: "/js.png",
-    },
-    {
-      name: "TypeScript",
-      image: "/typescript.png",
-    },
+    { name: "JavaScript", image: "/js.png" },
+    { name: "TypeScript", image: "/typescript.png" },
     {
       name: "Node.js",
       image:
@@ -28,10 +23,7 @@ export function TechSkillsSection() {
       image:
         "https://imgs.search.brave.com/aKPJGHohETaD3LzBBSiq7P-Qq9WFJw_sG9ZXGxzChyc/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly92ZWN0/b3JpZmllZC5jb20v/aW1hZ2VzL2V4cHJl/c3MtanMtaWNvbi0x/MC5wbmc",
     },
-    {
-      name: "React.js",
-      image: "/react.png",
-    },
+    { name: "React.js", image: "/react.png" },
     {
       name: "Next.js",
       image:
@@ -39,7 +31,6 @@ export function TechSkillsSection() {
     },
     {
       name: "PostgreSQL",
-
       image:
         "https://imgs.search.brave.com/I7blnnsAQUfEbvh890WKjjy8RghN4CQCFSFO6uX770s/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pY29u/LWxpYnJhcnkuY29t/L2ltYWdlcy9wb3N0/Z3Jlc3FsLWljb24v/cG9zdGdyZXNxbC1p/Y29uLTExLmpwZw",
     },
@@ -49,6 +40,10 @@ export function TechSkillsSection() {
         "https://imgs.search.brave.com/BLnUQkwzO3b9vHhq3Y7DLP1XAWNWLgwYbOr7eYZ4UAk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9yYXcu/Z2l0aHVidXNlcmNv/bnRlbnQuY29tL2Rl/dGFpbi9zdmctbG9n/b3MvbWFzdGVyL3N2/Zy9tL21vbmdvZGIt/aWNvbi0xLnN2Zw",
     },
   ];
+
+  const handleToggleTooltip = (name: string) => {
+    setOpenTooltip(openTooltip === name ? null : name);
+  };
 
   return (
     <section className="w-full" id="skill">
@@ -69,9 +64,19 @@ export function TechSkillsSection() {
         <TooltipProvider>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
             {skills.map((skill) => (
-              <Tooltip key={skill.name}>
+              <Tooltip
+                key={skill.name}
+                open={openTooltip === skill.name}
+                onOpenChange={(isOpen) =>
+                  setOpenTooltip(isOpen ? skill.name : null)
+                }
+                delayDuration={100}
+              >
                 <TooltipTrigger asChild>
-                  <div className="flex cursor-pointer flex-col items-center justify-center rounded-xl border border-border bg-card px-6 py-6 text-center transition ">
+                  <div
+                    className="flex cursor-pointer flex-col items-center justify-center rounded-xl border border-border bg-card px-6 py-6 text-center transition hover:scale-105"
+                    onClick={() => handleToggleTooltip(skill.name)}
+                  >
                     <Image
                       src={skill.image}
                       alt={skill.name}
@@ -81,7 +86,11 @@ export function TechSkillsSection() {
                   </div>
                 </TooltipTrigger>
 
-                <TooltipContent side="bottom">
+                <TooltipContent
+                  side="bottom"
+                  align="center"
+                  className="max-w-[120px]"
+                >
                   <span className="text-sm font-medium">{skill.name}</span>
                 </TooltipContent>
               </Tooltip>

@@ -12,72 +12,12 @@ interface Message {
   timestamp: Date;
 }
 
-const botResponses: Record<string, string> = {
-  about:
-    "I'm a full-stack developer and UI/UX designer with over 5 years of experience. I specialize in React, Next.js, and building scalable web applications. I'm passionate about creating seamless digital experiences!",
-  services:
-    "I offer Web Development (React & Next.js), Backend APIs (Node.js & Python), UI/UX Design, Performance Optimization, Security & Testing, and Automation & DevOps services.",
-  projects:
-    "I've worked on various projects including a Modern E-Commerce Platform, Task Management Application, and AI Writing Assistant. You can check out all my projects on the Projects page!",
-  contact:
-    "You can reach me at contact@example.com or call +1 (234) 567-890. I'm based in San Francisco, CA. Feel free to use the contact form on the Contact page!",
-  skills:
-    "My tech stack includes React, Next.js, TypeScript, Node.js, Python, PostgreSQL, MongoDB, Docker, AWS, and more. I'm proficient in both frontend and backend development.",
-  default:
-    "Hi! I can tell you about my services, projects, skills, or how to get in touch. Just ask!",
-};
-
-function getBotResponse(userMessage: string): string {
-  const message = userMessage.toLowerCase();
-
-  if (
-    message.includes("about") ||
-    message.includes("who are you") ||
-    message.includes("tell me about yourself")
-  ) {
-    return botResponses.about;
-  }
-  if (
-    message.includes("service") ||
-    message.includes("what do you do") ||
-    message.includes("what can you do") ||
-    message.includes("offer")
-  ) {
-    return botResponses.services;
-  }
-  if (
-    message.includes("project") ||
-    message.includes("work") ||
-    message.includes("portfolio")
-  ) {
-    return botResponses.projects;
-  }
-  if (
-    message.includes("contact") ||
-    message.includes("email") ||
-    message.includes("reach") ||
-    message.includes("phone")
-  ) {
-    return botResponses.contact;
-  }
-  if (
-    message.includes("skill") ||
-    message.includes("tech") ||
-    message.includes("technology")
-  ) {
-    return botResponses.skills;
-  }
-
-  return botResponses.default;
-}
 export function ChatbotWidget() {
-  // const [isOpen, setIsOpen] = useState(false);
-  // const [message, setMessage] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "Hi! I'm here to help you learn more about me. Ask me about my services, projects, skills, or how to get in touch!",
+      text: "Hi! 👋 This chat isn’t working at the moment. Please reach out to me directly via email at developerunique123@gmail.com. I’ll get back to you as soon as possible!",
       sender: "bot",
       timestamp: new Date(),
     },
@@ -87,6 +27,7 @@ export function ChatbotWidget() {
   const handleSendMessage = () => {
     if (!inputValue.trim()) return;
 
+    // User message
     const userMessage: Message = {
       id: Date.now().toString(),
       text: inputValue,
@@ -97,11 +38,11 @@ export function ChatbotWidget() {
     setMessages((prev) => [...prev, userMessage]);
     setInputValue("");
 
-    // Simulate bot response
+    // Bot always responds with the static "chat not working" message
     setTimeout(() => {
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: getBotResponse(inputValue),
+        text: "Hi! 👋 This chat isn’t working at the moment. Please reach out to me directly via email at developerunique123@gmail.com. I’ll get back to you as soon as possible!",
         sender: "bot",
         timestamp: new Date(),
       };
@@ -122,7 +63,7 @@ export function ChatbotWidget() {
         onClick={() => setIsOpen(!isOpen)}
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-accent-foreground to-primary hover:scale-110"
       >
-        {isOpen ? <X className="w-6 h-6" /> : <BotIcon className="w-6 h-6" />}
+        {isOpen ? <X className="w-6 h-6" /> : <BotIcon className="w-12 h-12" />}
       </Button>
 
       {/* Chatbot Window */}

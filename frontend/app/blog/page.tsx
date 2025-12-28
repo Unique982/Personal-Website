@@ -24,7 +24,7 @@ export default function BlogPage() {
       <Navbar />
 
       {/* Back */}
-      <div className="fixed top-20 left-8 z-50">
+      <div className="top-20 left-8 z-50">
         <Link href="/">
           <Button variant="outline" size="sm">
             <ArrowLeft className="h-4 w-4 mr-2" />

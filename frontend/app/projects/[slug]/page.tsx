@@ -54,7 +54,7 @@ export default async function ProjectDetailPage({
       <Navbar />
       <main className="flex-1">
         {/* Back Button */}
-        <div className="fixed top-20 left-8 z-50">
+        <div className=" top-20 left-8 z-50">
           <Link href="/projects">
             <Button variant="outline" size="sm">
               <ArrowLeft className="h-4 w-4 mr-2" />

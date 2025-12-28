@@ -136,7 +136,7 @@ export const projects: Project[] = [
       "A blog platform with JWT authentication and role-based dashboards.",
     longDescription:
       "A full-stack Blog Management System supporting post CRUD, commenting, JWT authentication, and separate admin/user dashboards.",
-    image: "blog.png",
+    image: "/blog.png",
     techStack: ["Node.js", "Express.js", "MongoDB", "JWT", "React.js"],
     features: [
       "Post CRUD operations",
@@ -147,7 +147,7 @@ export const projects: Project[] = [
     ],
     status: "completed",
     githubUrl: "https://github.com/Unique982/Blog-Management-System.git",
-    screenshots: ["https://picsum.photos/seed/blog1/1200/700"],
+    screenshots: ["/blog.png"],
   },
   {
     id: "6",

@@ -9,26 +9,33 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Portfolio - Creative Developer & Designer",
+  title: "Unique Neupane|Full Stack Developer | MERN, PHP, Next.js",
   description:
-    "Professional portfolio showcasing web development, design, and digital solutions",
-  generator: "v0.app",
+    "Unique Neupane is a Full Stack Developer from Kathmandu, Nepal specializing in MERN stack, PHP, Laravel, and Next.js, building scalable EdTech and hospital management systems.",
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
+        url: "/favicon-16x16.png",
+        sizes: "16x16",
+        type: "image/png",
       },
       {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
+        url: "/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
       },
     ],
-    apple: "/apple-icon.png",
+    apple: "/apple-touch-icon.png",
+    other: [
+      {
+        rel: "android-chrome-192x192",
+        url: "/android-chrome-192x192.png",
+      },
+      {
+        rel: "android-chrome-512x512",
+        url: "/android-chrome-512x512.png",
+      },
+    ],
   },
 };
 
@@ -39,7 +46,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`font-sans antialiased font-serif`}>
+      <body className={`font-serif antialiased `}>
         {children}
         <Toaster />
         <Analytics />

@@ -23,7 +23,7 @@ export default function ProjectsPage() {
       <div className="min-h-screen flex flex-col">
         <Navbar />
         {/* Hero Section */}
-        <div className="fixed top-20 left-8 z-50">
+        <div className="top-20 left-8 z-50 ">
           <Link href="/">
             <Button
               variant="outline"

@@ -18,11 +18,11 @@ export function Navbar() {
 
   const menuItems = [
     { name: "Home", href: "/" },
-    { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Projects", href: "#projects" },
-    { name: "Blog", href: "#blog" },
-    { name: "Contact", href: "#contact" },
+    { name: "About", href: "/#about" },
+    { name: "Services", href: "/#services" },
+    { name: "Projects", href: "/#projects" },
+    { name: "Blog", href: "/#blog" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   const scrollToSection = (href: string) => {
@@ -39,14 +39,21 @@ export function Navbar() {
     <nav className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold">
-            <Image
-              src="https://scontent.fbwa1-1.fna.fbcdn.net/v/t39.30808-6/491799846_1169284674662162_1326970635664012583_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=WSdCkkL6FUAQ7kNvwEA2-vG&_nc_oc=AdlMYbXM1z7vwGyhOr3zGrJeCIPFfXsFnl9Xc0KkiAXi2NkDE3vMSrvF5c-BJu3oD0wfPZyVFRez4BEWGFwWBsJd&_nc_zt=23&_nc_ht=scontent.fbwa1-1.fna&_nc_gid=dv2GbughnXfBWaSvzdTx_w&oh=00_AflqchnsBb8MDniTK3jS9PdxuMM8KM9RIxCjtrawv2YAMA&oe=6952EDA3"
-              alt="Logo"
-              width={40}
-              height={40}
-              className="rounded-full w-10 h-10"
-            />
+          <Link href="/" className="flex items-center gap-3">
+            <div className="flex items-center justify-center rounded-full border border-border bg-muted p-1">
+              <Image
+                src="/favicon-32x32.png"
+                alt="Khemraj Neupane Logo"
+                width={36}
+                height={36}
+                className="rounded-full"
+                priority
+              />
+            </div>
+
+            <span className="hidden sm:block text-lg font-semibold tracking-tight">
+              U<span className="text-primary">.Neupane</span>
+            </span>
           </Link>
 
           {/* Desktop Menu */}

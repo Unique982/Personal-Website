@@ -14,18 +14,20 @@ import { useToast } from "@/hooks/use-toast";
 export function ContactSection() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    // Simulate submission delay
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
+    // Show static-site notice
     toast({
-      title: "Message sent!",
-      description: "Thank you for your message. I'll get back to you soon.",
+      title: "😢 Sorry!",
+      description:
+        "This website is currently static and cannot send messages. Please contact me directly at developerunique123@gmail.com",
     });
+    position: "center";
 
     setIsSubmitting(false);
     (e.target as HTMLFormElement).reset();
