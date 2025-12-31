@@ -11,7 +11,7 @@ class AboutController {
         description: req.body.description,
         profileImage: req.body.profileImage,
       });
-      const about = await aboutModel.create(parsedInput);
+      const about = await aboutModel.create(parsedInput as any);
 
       return res.status(200).json({
         sucess: true,
@@ -25,3 +25,5 @@ class AboutController {
     }
   }
 }
+
+export default AboutController;

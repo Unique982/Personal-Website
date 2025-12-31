@@ -10,6 +10,7 @@ import {
   Youtube,
   Linkedin,
 } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Footer() {
   const socialLinks = [

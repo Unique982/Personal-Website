@@ -1,13 +1,13 @@
 import app from "./src/app";
 import { Server } from "socket.io";
 import http from "http";
+// import db configure
+import { connectToDatabase } from "./src/config/db";
 //dotenv config garna
 import { config } from "dotenv";
 config();
 
-// import db configure
-import { connectToDatabase } from "./src/config/db";
-
+connectToDatabase();
 // create http server  from express app
 const server = http.createServer(app);
 

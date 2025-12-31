@@ -64,7 +64,7 @@ export function HeroSection() {
           <div className="relative flex justify-center lg:justify-end order-1 lg:order-2 flex-1 w-full max-w-md md:max-w-lg">
             <div className="relative w-72 h-96 md:w-96 md:h-[500px] rounded-2xl overflow-hidden border border-gray-200 bg-white/20 shadow-md">
               <Image
-                src="https://scontent.fbwa1-1.fna.fbcdn.net/v/t39.30808-6/491799846_1169284674662162_1326970635664012583_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=WSdCkkL6FUAQ7kNvwEA2-vG&_nc_oc=AdlMYbXM1z7vwGyhOr3zGrJeCIPFfXsFnl9Xc0KkiAXi2NkDE3vMSrvF5c-BJu3oD0wfPZyVFRez4BEWGFwWBsJd&_nc_zt=23&_nc_ht=scontent.fbwa1-1.fna&_nc_gid=dv2GbughnXfBWaSvzdTx_w&oh=00_AflqchnsBb8MDniTK3jS9PdxuMM8KM9RIxCjtrawv2YAMA&oe=6952EDA3"
+                src="/profile.jpg"
                 alt="Profile"
                 fill
                 className="object-cover"

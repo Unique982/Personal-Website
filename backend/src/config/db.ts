@@ -16,7 +16,7 @@ export async function connectToDatabase() {
     await mongoose.connect(mongoUri, {
       dbName,
     });
-    console.log("Connection to Mongoose!");
+    console.log(" 🔌Connection to Mongoose!");
   } catch (err) {
     console.log("Mongoose connection error:", err);
   }
