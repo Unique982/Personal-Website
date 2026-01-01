@@ -5,6 +5,7 @@ import http from "http";
 import { connectToDatabase } from "./src/config/db";
 //dotenv config garna
 import { config } from "dotenv";
+
 config();
 
 connectToDatabase();

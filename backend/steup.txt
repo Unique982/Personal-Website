@@ -9,3 +9,15 @@
     "build": "tsc",
     "start": "ts-node server.ts"
 c. create service.ts file 
+
+## add swagerr 
+nmp i swagger-ui-express
+npm i swagger -D @types/swagger-ui-express
+npm i swagerr-autogen
+npm i -D @types/swagger-jsdoc
+npm i swagerr-jsdoc
+
+
+## node mailer 
+npm i nodemailer
+npm i -D @types/nodemailer 

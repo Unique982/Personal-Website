@@ -1,6 +1,7 @@
 {
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
+    "resolveJsonModule": true,
     // File Layout
     "rootDir": "./",
     // "outDir": "./dist",
@@ -33,6 +34,7 @@
     // "noPropertyAccessFromIndexSignature": true,
 
     // Recommended Options
+    "esModuleInterop": true,
     "strict": true,
     "jsx": "react-jsx",
     "verbatimModuleSyntax": false,

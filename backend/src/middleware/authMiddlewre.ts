@@ -1,12 +1,17 @@
 import jwt from "jsonwebtoken";
 import User from "../model/user.model";
+import { NextFunction, Request, Response } from "express";
 
 class AuthMiddleware {
-  static async isUserLoggeedIn(req: any, res: any, next: any): Promise<void> {
-    const token = req.header.authorization;
+  static async isUserLoggeedIn(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    const token = req.headers.authorization;
     // if token xaina vani
     if (!token) {
-      req.status(403).json({
+      res.status(403).json({
         message: "Token must be provided",
       });
       return;
@@ -15,7 +20,7 @@ class AuthMiddleware {
     jwt.verify(
       token,
       process.env.jwtSecretKey as string,
-      async (err: any, result: any) => {
+      async (err, result: any) => {
         if (err) {
           res.status(403).json({
             message: "Invalid token!",
@@ -28,10 +33,12 @@ class AuthMiddleware {
             });
             return;
           }
-          req.user = userData;
+          (req as any).user = userData;
           next();
         }
       }
     );
   }
 }
+
+export default AuthMiddleware;

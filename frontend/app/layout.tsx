@@ -47,6 +47,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4598780809353718"
+          crossorigin="anonymous"
+        ></script>
+      </head>
       <body className={`font-serif antialiased `}>
         {children}
         <Toaster />

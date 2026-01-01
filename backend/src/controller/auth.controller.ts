@@ -25,4 +25,17 @@ class AuthController {
       }
     }
   }
+  static async forgetPassword(req: Request, res: Response) {}
+  // otp verify
+  static async otpVerify(req: Request, res: Response) {}
+  // new-password
+  static async newPassword(req: Request, res: Response) {}
+  // profile update
+  static async updateProfile(req: Request, res: Response) {}
+  // password update
+  static async passwordUpdate(req: Request, res: Response) {}
+  // logout
+  static async logout(req: Request, res: Response) {}
 }
+
+export default AuthController;
