@@ -1,28 +1,33 @@
 // about.controller.ts
 import { Request, Response } from "express";
 import { createAboutSchema } from "../schema/about.schema";
-import aboutModel from "../model/about.model";
+import About from "../model/about.model";
+import { IExtendRequest } from "../middleware/authMiddlewre";
 
 class AboutController {
-  static async createAbout(req: Request, res: Response) {
-    try {
-      const parsedInput = createAboutSchema.parse({
-        title: req.body.title,
-        description: req.body.description,
-        profileImage: req.body.profileImage,
-      });
-      const about = await aboutModel.create(parsedInput as any);
-
-      return res.status(200).json({
-        sucess: true,
-        message: "About create sucessfully!",
-      });
-    } catch (err: any) {
-      return res.status(400).json({
-        success: false,
-        message: err.errors?.[0]?.message || err.message,
-      });
+  static async createAbout(req: IExtendRequest, res: Response) {
+    // Zod validation safeParse use
+    const result = createAboutSchema.safeParse(req.body);
+    if (!result.success) {
+      // validation error return
+      return res.status(400).json({ errors: result.error });
     }
+
+    const validatedData = result.data;
+    const { title, description, profileImage } = validatedData;
+
+    if (!title || !description || !profileImage) {
+      return res.status(400).json({ message: "All fields are required!" });
+    }
+
+    const about = new About(validatedData);
+    await about.save();
+
+    return res.status(200).json({
+      success: true,
+      message: "About created successfully!",
+      about,
+    });
   }
 }
 

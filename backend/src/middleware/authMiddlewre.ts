@@ -2,9 +2,24 @@ import jwt from "jsonwebtoken";
 import User from "../model/user.model";
 import { NextFunction, Request, Response } from "express";
 
+export interface IRole {
+  Admin: "admin";
+  User: "user";
+}
+//Extend Express Request to include user
+export interface IExtendRequest extends Request {
+  user?: {
+    id: string;
+    username: string;
+    email: string;
+    role: string;
+    password: string;
+  };
+}
+
 class AuthMiddleware {
   static async isUserLoggeedIn(
-    req: Request,
+    req: IExtendRequest,
     res: Response,
     next: NextFunction
   ): Promise<void> {
