@@ -51,7 +51,7 @@ export default function Footer() {
           </h3>
 
           <ul className="space-y-2">
-            {["Home", "About", "Skill", "Projects", "Blog", "Contact"].map(
+            {["Home", "About", "Skill", "Projects", "Blog", "Contact","Privacy Policy"].map(
               (link) => (
                 <li key={link}>
                   <a
