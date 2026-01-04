@@ -51,18 +51,21 @@ export default function Footer() {
           </h3>
 
           <ul className="space-y-2">
-            {["Home", "About", "Skill", "Projects", "Blog", "Contact","Privacy Policy"].map(
-              (link) => (
-                <li key={link}>
-                  <a
-                    href={`#${link.toLowerCase().replace(" ", "")}`}
-                    className="hover:text-sky-400 transition"
-                  >
-                    {link}
-                  </a>
-                </li>
-              )
-            )}
+            {[
+              { label: "Home", href: "/" },
+              { label: "About", href: "/#about" },
+              { label: "Skill", href: "/#skill" },
+              { label: "Projects", href: "/#projects" },
+              { label: "Blog", href: "/blog" },
+              { label: "Contact", href: "/#contact" },
+              { label: "Privacy Policy", href: "/privacy" },
+            ].map((link) => (
+              <li key={link.label}>
+                <a href={link.href} className="hover:text-sky-400 transition">
+                  {link.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 
