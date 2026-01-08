@@ -1,21 +1,39 @@
 import express, { Router } from "express";
 import SkillController from "../controller/skill.controller";
+import { asynErrorHandle } from "../service/asynErrorHandle";
+import AuthMiddleware from "../middleware/authMiddlewre";
+import { upload } from "../service/multer";
 const router: Router = express.Router();
 // skill create api
 router
   .route("/")
-  .post(SkillController.createSkill)
+  .post(
+    AuthMiddleware.isUserLoggeedIn,
+    upload.single("icon"),
+    asynErrorHandle(SkillController.createSkill)
+  )
   // fetch all skil api
-  .get(SkillController.fetchSkill);
+  .get(asynErrorHandle(SkillController.fetchSkill));
 // delete skill api
 router
   .route("/:id")
-  .delete(SkillController.deleteSkill)
+  .delete(
+    AuthMiddleware.isUserLoggeedIn,
+    asynErrorHandle(SkillController.deleteSkill)
+  )
   // update skill api
-  .patch(SkillController.udpateSkill);
+  .patch(
+    AuthMiddleware.isUserLoggeedIn,
+    upload.single("icon"),
+    asynErrorHandle(SkillController.udpateSkill)
+  );
 // draft skill api
-router.route("/draft/:id").patch(SkillController.draftSkill);
+router
+  .route("/status/:id")
+  .patch(
+    AuthMiddleware.isUserLoggeedIn,
+    asynErrorHandle(SkillController.statusSkill)
+  );
 // publich skill api
-router.route("/publich/:id").patch(SkillController.publichSkill);
 
 export default router;

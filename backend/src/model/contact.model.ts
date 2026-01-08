@@ -2,13 +2,13 @@ import mongoose from "mongoose";
 
 const ContactSchema = new mongoose.Schema(
   {
-    userName: {
-      firstName: {
+    username: {
+      firstname: {
         type: String,
         required: true,
         trim: true,
       },
-      lastName: {
+      lastname: {
         type: String,
         required: true,
         trim: true,
@@ -34,11 +34,15 @@ const ContactSchema = new mongoose.Schema(
       default: "unread",
     },
     reply: {
+      subject: {
+        type: String,
+        trim: true,
+      },
       message: {
         type: String,
       },
       repliedBy: {
-        type: String, // admin name/email
+        type: String,
       },
       repliedAt: {
         type: Date,

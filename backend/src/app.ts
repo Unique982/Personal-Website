@@ -1,14 +1,20 @@
-// app.ts
+// src/app.ts
 import express from "express";
 import router from "./router/index";
-// import swaggerUi from "swagger-ui-express";
 
-// import swaggerDocument from "./config/swagger-output.json";
+// import { Request, Response } from "express";
+
 const app = express();
+console.log("run");
 app.use(express.json());
-// here all router
-app.use(router);
+app.use(express.urlencoded({ extended: true }));
 
-// app.use("/api-doc", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.get("/test", (req, res) => {
+  console.log("API Test route hit!");
+  res.status(200).json({ message: "Server is responding!" });
+});
+
+// here all router
+app.use("/api", router);
 
 export default app;

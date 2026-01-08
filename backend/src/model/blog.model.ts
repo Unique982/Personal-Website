@@ -2,17 +2,24 @@ import mongoose from "mongoose";
 
 const BlogSchema = new mongoose.Schema(
   {
-    blogTitle: {
+    // title
+    title: {
       type: String,
       required: true,
       trim: true,
     },
-    excerpt: {
-      type: String, // short description below title
+    //sluf
+    slug: {
+      type: String,
       required: true,
       trim: true,
     },
-    blogDescription: {
+    description: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    longDescription: {
       type: String,
       required: true,
       trim: true,
@@ -31,9 +38,10 @@ const BlogSchema = new mongoose.Schema(
       type: [String],
       default: [],
     },
-    isPublished: {
-      type: Boolean,
-      default: true,
+    status: {
+      type: String,
+      enum: ["draft", "publich"],
+      default: "draft",
     },
   },
   { timestamps: true }

@@ -5,7 +5,7 @@ const router: Router = express.Router();
 // login
 router.route("/login").post(AuthController.isLogin);
 // logout
-router.route("/logout").post(AuthController.logout);
+// router.route("/logout").post(AuthController.logout);
 // forget password
 router.route("/forget-password").post(AuthController.forgetPassword);
 // Otpverify

@@ -1,10 +1,9 @@
-import { config } from "dotenv";
 import mongoose from "mongoose";
-config();
+import { ENV } from "./env.config";
 
 export async function connectToDatabase() {
-  const mongoUri = process.env.MONGO_URI;
-  const dbName = process.env.DATABASE_NAME;
+  const mongoUri = ENV.MONGO_URI;
+  const dbName = ENV.DATABASE_NAME;
   if (!mongoUri) {
     throw new Error("MONGO URI is not define .env file");
   }
@@ -16,8 +15,8 @@ export async function connectToDatabase() {
     await mongoose.connect(mongoUri, {
       dbName,
     });
-    console.log(" 🔌Connection to Mongoose!");
+    console.log("🔌 Connection to Mongoose!");
   } catch (err) {
-    console.log("Mongoose connection error:", err);
+    console.log("😭Mongoose connection error:", err);
   }
 }

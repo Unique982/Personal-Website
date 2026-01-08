@@ -12,7 +12,7 @@ import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import generateToken from "../service/generatedToken";
 import { otpGenerated } from "../service/otpGenerated";
-import { sendMail } from "../service/senEmail";
+import { sendMail } from "../service/sendEmail";
 import { IExtendRequest } from "../middleware/authMiddlewre";
 
 class AuthController {
@@ -110,13 +110,13 @@ class AuthController {
     await user.save();
     res.status(200).json({ message: "Profile updated successfully" });
   }
-  // password update
-  static async passwordUpdate(req: IExtendRequest, res: Response) {
-    const userId = req.user?.id;
-    // paxi upload graxu
-  }
-  // logout
-  static async logout(req: Request, res: Response) {}
+  // // password update
+  // static async passwordUpdate(req: IExtendRequest, res: Response) {
+  //   const userId = req.user?.id;
+  //   // paxi upload graxu
+  // }
+  // // logout
+  // static async logout(req: Request, res: Response) {}
 }
 
 export default AuthController;

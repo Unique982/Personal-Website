@@ -1,21 +1,26 @@
 // router/index.ts
-import { Router } from "express";
+import express, { Router } from "express";
 
-import aboutRouter from "./about.route";
+/**
+ * All Router file import here
+ */
 import authRouter from "./auth.route";
-import skillRouter from "./skill.route";
-import serviceRouter from "./service.route";
+import aboutRouter from "./about.route";
 import projectRouter from "./project.route";
-import blogRouter from "./blog.route";
 import contactRouter from "./contact.route";
+import skillRouter from "./skill.route";
+import servicesRouter from "./service.route";
+import blogRouter from "./blog.route";
 
-const router = Router();
-
-router.use("/api/about", aboutRouter);
-router.use("/api/auth", authRouter);
-router.use("/api/skill", skillRouter);
-router.use("/api/services", serviceRouter);
-router.use("/api/projects", projectRouter);
-router.use("/api/blogs", blogRouter);
-router.use("/api/contact-us", contactRouter);
+const router: Router = express.Router();
+/**
+ * all router api
+ */
+router.use("/auth", authRouter);
+router.use("/about", aboutRouter);
+router.use("/projects", projectRouter);
+router.use("/contact", contactRouter);
+router.use("/skills", skillRouter);
+router.use("/services", servicesRouter);
+router.use("/blogs", blogRouter);
 export default router;

@@ -10,7 +10,10 @@ export interface IRole {
 export interface IExtendRequest extends Request {
   user?: {
     id: string;
-    username: string;
+    userName?: {
+      firstName: string;
+      lastName: string;
+    } | null;
     email: string;
     role: string;
     password: string;
@@ -48,7 +51,7 @@ class AuthMiddleware {
             });
             return;
           }
-          (req as any).user = userData;
+          req.user = userData as any;
           next();
         }
       }

@@ -1,12 +1,12 @@
 import { z } from "zod";
 // login input defin validation schema
 export const loginSchema = z.object({
-  email: z.string().email("Invalid email address").trim(),
+  email: z.email("Invalid email address").trim(),
   password: z.string().min(6),
 });
 // forget password input validation schema
 export const forgetPasswordSchema = z.object({
-  email: z.string().email("Invalid email address").trim(),
+  email: z.email("Invalid email address").trim(),
 });
 
 // otp verify input define validation schema
@@ -49,7 +49,10 @@ export const profileUpdateSchema = z.object({
   }),
   email: z.string().email("Invalid email address").trim(),
 });
-
+/**
+ * TypeScript type inferred from schema
+ * used for controller/ service typing
+ */
 export type LoginInput = z.infer<typeof loginSchema>;
 export type ForgetPasswordInput = z.infer<typeof forgetPasswordSchema>;
 export type otpVerifyInput = z.infer<typeof otpVerifySchema>;

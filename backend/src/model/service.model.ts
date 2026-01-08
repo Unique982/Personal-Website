@@ -16,21 +16,16 @@ const ServiceSchame = new mongoose.Schema(
       type: String,
       required: true,
     },
-    technologies: [
-      {
-        type: String,
-      },
-    ],
     features: [
       {
         type: [String],
         default: [],
       },
     ],
-
-    isActive: {
-      type: Boolean,
-      default: true,
+    status: {
+      type: String,
+      enum: ["active", "inactive"],
+      default: "inactive",
     },
   },
   { timestamps: true }

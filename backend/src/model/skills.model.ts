@@ -2,22 +2,18 @@ import mongoose, { model } from "mongoose";
 
 const SkillSchema = new mongoose.Schema(
   {
-    category: {
+    skillname: {
       type: String,
       required: true,
-      trim: true,
-    },
-    skill: {
-      type: [String],
-      required: true,
-      default: [],
+      unique: true,
     },
     icon: {
       type: String,
     },
-    isActive: {
-      type: Boolean,
-      default: true,
+    status: {
+      type: String,
+      enum: ["active", "inactive"],
+      default: "inactive",
     },
   },
   { timestamps: true }
