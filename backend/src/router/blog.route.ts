@@ -1,6 +1,6 @@
 import express, { Router } from "express";
 import BlogController from "../controller/blog.controller";
-import AuthMiddleware from "../middleware/authMiddlewre";
+import AuthMiddleware, { Role } from "../middleware/authMiddlewre";
 import { asynErrorHandle } from "../service/asynErrorHandle";
 import { upload } from "../service/multer";
 const router: Router = express.Router();
@@ -9,6 +9,7 @@ router
   .route("/")
   .post(
     AuthMiddleware.isUserLoggeedIn,
+    AuthMiddleware.restirectToUser(Role.Admin),
     upload.fields([
       { name: "coverImage", maxCount: 1 },
       { name: "subImage", maxCount: 5 },
@@ -22,6 +23,7 @@ router
   .route("/:id")
   .patch(
     AuthMiddleware.isUserLoggeedIn,
+    AuthMiddleware.restirectToUser(Role.Admin),
     upload.fields([
       { name: "coverImage", maxCount: 1 },
       { name: "subImage", maxCount: 5 },
@@ -31,6 +33,7 @@ router
   // delet blog
   .delete(
     AuthMiddleware.isUserLoggeedIn,
+    AuthMiddleware.restirectToUser(Role.Admin),
     asynErrorHandle(BlogController.deleteBlogs)
   )
   // singel get blog
@@ -39,6 +42,7 @@ router
   .route("/status/:id")
   .patch(
     AuthMiddleware.isUserLoggeedIn,
+    AuthMiddleware.restirectToUser(Role.Admin),
     asynErrorHandle(BlogController.statusBlogs)
   );
 

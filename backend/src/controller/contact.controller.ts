@@ -7,6 +7,8 @@ import {
   sendReplySchema,
 } from "../schema/contact.schema";
 import { sendMail } from "../service/sendEmail";
+import Notification from "../model/notification.model";
+import { getIO } from "../../server";
 class ContactUs {
   // user submit form
   static async submitFrom(req: Request, res: Response) {
@@ -41,6 +43,18 @@ class ContactUs {
       email,
       message,
       subject,
+    });
+    // create noitifixation
+
+    const notification = await Notification.create({
+      title: "New Contact Request",
+      message: `${username.firstname} ${username.lastname} submitted a contact form`,
+    });
+    getIO().emit("newNotification", {
+      notificationId: notification._id,
+      title: notification.title,
+      message: notification.message,
+      createdAt: notification.createdAt,
     });
     res.status(200).json({ message: "Contact request submitted successful😀" });
   }

@@ -16,7 +16,9 @@ class BlogController {
     const coverImage = req.file?.path;
     const subImage = (files["subImage"] || []).map((file) => file.path);
     if (!coverImage)
-      return res.status(400).json({ message: "Project image is required 🤷‍♂️" });
+      return res
+        .status(400)
+        .json({ message: "Cover image image is required 🤷‍♂️" });
     const exists = await Blog.findOne({
       $or: [{ slug }, { title }],
     });

@@ -11,7 +11,7 @@ const ExperienceSchema = new mongoose.Schema(
       type: String,
     },
     startYear: {
-      type: Number,
+      type: String,
       required: true,
     },
     endYear: {
@@ -20,6 +20,11 @@ const ExperienceSchema = new mongoose.Schema(
     },
     icon: {
       type: String,
+    },
+    status: {
+      type: String,
+      enum: ["draft", "publich"],
+      default: "draft",
     },
     description: {
       type: String,

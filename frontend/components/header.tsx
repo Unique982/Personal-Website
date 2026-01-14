@@ -48,6 +48,8 @@ export function Navbar() {
                 height={36}
                 className="rounded-full"
                 priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 448px, 600px"
+                // quality={85}
               />
             </div>
 

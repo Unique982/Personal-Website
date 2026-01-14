@@ -19,6 +19,10 @@ export interface IExtendRequest extends Request {
     password: string;
   };
 }
+export enum Role {
+  Admin = "admin",
+  User = "user",
+}
 
 class AuthMiddleware {
   static async isUserLoggeedIn(
@@ -40,10 +44,11 @@ class AuthMiddleware {
       process.env.jwtSecretKey as string,
       async (err, result: any) => {
         if (err) {
-          res.status(403).json({
+          return res.status(403).json({
             message: "Invalid token!",
           });
-        } else {
+        }
+        try {
           const userData = await User.findById(result.userId);
           if (!userData) {
             res.status(404).json({
@@ -53,9 +58,23 @@ class AuthMiddleware {
           }
           req.user = userData as any;
           next();
+        } catch (error) {
+          res.status(500).json({ message: "Something went wrong" });
         }
       }
     );
+  }
+  // role base access control
+  static restirectToUser(...roles: Role[]) {
+    return (req: IExtendRequest, res: Response, next: NextFunction) => {
+      let userRole = req.user?.role as Role;
+
+      if (!roles.includes(userRole)) {
+        res.status(403).json({ message: "You dont have permission😭" });
+      } else {
+        next();
+      }
+    };
   }
 }
 

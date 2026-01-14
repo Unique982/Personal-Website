@@ -1,6 +1,6 @@
 import express, { Router } from "express";
 import ServicesController from "../controller/services.controller";
-import AuthMiddleware from "../middleware/authMiddlewre";
+import AuthMiddleware, { Role } from "../middleware/authMiddlewre";
 import { asynErrorHandle } from "../service/asynErrorHandle";
 import { upload } from "../service/multer";
 const router: Router = express.Router();
@@ -10,6 +10,7 @@ router
   .route("/")
   .post(
     AuthMiddleware.isUserLoggeedIn,
+    AuthMiddleware.restirectToUser(Role.Admin),
     upload.single("icon"),
     asynErrorHandle(ServicesController.createServices)
   )
@@ -20,6 +21,7 @@ router
   .route("/:id")
   .delete(
     AuthMiddleware.isUserLoggeedIn,
+    AuthMiddleware.restirectToUser(Role.Admin),
     asynErrorHandle(ServicesController.deleteServices)
   )
   // deatils service api
@@ -31,6 +33,7 @@ router
   // update service api
   .patch(
     AuthMiddleware.isUserLoggeedIn,
+    AuthMiddleware.restirectToUser(Role.Admin),
     upload.single("icon"),
     asynErrorHandle(ServicesController.updateServices)
   );
@@ -38,6 +41,7 @@ router
   .route("/status/:id")
   .patch(
     AuthMiddleware.isUserLoggeedIn,
+    AuthMiddleware.restirectToUser(Role.Admin),
     asynErrorHandle(ServicesController.statusServices)
   );
 

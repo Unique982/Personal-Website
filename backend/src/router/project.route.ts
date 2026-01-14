@@ -1,7 +1,7 @@
 import express, { Router } from "express";
 import ProjectController from "../controller/project.controller";
 
-import AuthMiddleware from "../middleware/authMiddlewre";
+import AuthMiddleware, { Role } from "../middleware/authMiddlewre";
 import { asynErrorHandle } from "../service/asynErrorHandle";
 import { upload } from "../service/multer";
 const router: Router = express.Router();
@@ -11,6 +11,7 @@ router
   .route("/")
   .post(
     AuthMiddleware.isUserLoggeedIn,
+    AuthMiddleware.restirectToUser(Role.Admin),
     upload.fields([
       { name: "projectImage", maxCount: 1 },
       { name: "screenshots", maxCount: 5 },
@@ -24,6 +25,7 @@ router
   .route("/draft/:id")
   .patch(
     AuthMiddleware.isUserLoggeedIn,
+    AuthMiddleware.restirectToUser(Role.Admin),
     asynErrorHandle(ProjectController.darftProject)
   );
 // publich status project api
@@ -31,6 +33,7 @@ router
   .route("/publich/:id")
   .patch(
     AuthMiddleware.isUserLoggeedIn,
+    AuthMiddleware.restirectToUser(Role.Admin),
     asynErrorHandle(ProjectController.publichProject)
   );
 // delete project api
@@ -38,6 +41,7 @@ router
   .route("/:id")
   .delete(
     AuthMiddleware.isUserLoggeedIn,
+    AuthMiddleware.restirectToUser(Role.Admin),
     asynErrorHandle(ProjectController.deleteProject)
   )
   // project details fetch api
@@ -48,6 +52,7 @@ router
   // update project api
   .patch(
     AuthMiddleware.isUserLoggeedIn,
+    AuthMiddleware.restirectToUser(Role.Admin),
     upload.fields([
       { name: "projectImage", maxCount: 1 },
       { name: "screenshots", maxCount: 5 },
