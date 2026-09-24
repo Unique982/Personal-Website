@@ -58,7 +58,9 @@ export default function Footer() {
               { label: "Projects", href: "/#projects" },
               { label: "Blog", href: "/blog" },
               { label: "Contact", href: "/#contact" },
-              { label: "Privacy Policy", href: "/privacy" },
+              { label: "Privacy Policy", href: "/privacy-policy" },
+              { label: "Terms & Conditions", href: "/terms" },
+              { label: "Disclaimer", href: "/disclaimer" },
             ].map((link) => (
               <li key={link.label}>
                 <a href={link.href} className="hover:text-sky-400 transition">

@@ -14,6 +14,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
+import Link from "next/link";
+
 interface Project {
   id: number;
   name: string;
@@ -121,11 +123,11 @@ export default function ProjectManagementTable() {
         <CardContent>
           {/* Add button + Search */}
           <div className="flex flex-col md:flex-row md:items-center justify-between mb-5 gap-3">
-            {/* <Link href="/admin/dashboard/projects/add"> */}
-            <Button className="px-4 py-2 bg-blue-100 text-blue-900 rounded-lg text-sm font-medium hover:bg-blue-200 transition-colors">
-              + Add New Project
-            </Button>
-            {/* </Link> */}
+            <Link href="/admin/dashboard/projects/add">
+              <Button className="px-4 py-2 bg-blue-100 text-blue-900 rounded-lg text-sm font-medium hover:bg-blue-200 transition-colors">
+                + Add New Project
+              </Button>
+            </Link>
             <Input
               placeholder="🔍 Search project by name..."
               value={search}
